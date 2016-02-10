@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="app_name">Effective Navigation</string>
+    <string name="demo_collection">Show Splash Screen</string>
+    <string name="demo_external_activity">Demo External Activity</string>
+    <string name="dummy_section_text">Section %1d is just a dummy section.</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_start_splach">StartSplachActivity</string>
+</resources>
