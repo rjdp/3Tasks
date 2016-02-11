@@ -18,7 +18,10 @@ package com.example.android.effectivenavigation;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +37,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -161,7 +165,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Task " + (position + 1);
+            return "Task #" + (position + 1);
         }
     }
 
@@ -200,7 +204,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         private ExpandingListView mListView;
         private ProgressBar spinner;
         private CustomArrayAdapter adapter;
-
+        private Button retryButton;
+   private View rootView;
+       private List<ExpandableListItem> mData;
         public ForecastFragment() {
         }
 
@@ -209,11 +215,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             super.onCreate(savedInstanceState);
             // Add this line in order for this fragment to handle menu events.
             setHasOptionsMenu(true);
+
         }
 
         @Override
         public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
             inflater.inflate(R.menu.forecastfragment, menu);
+
         }
 
         @Override
@@ -223,10 +231,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             // as you specify a parent activity in AndroidManifest.xml.
             int id = item.getItemId();
             if (id == R.id.action_refresh) {
-                FetchWeatherTask weatherTask = new FetchWeatherTask();
-                weatherTask.execute("");
+                populate();
                 return true;
             }
+            if(id==R.id.show_dummy_data){show_dummy();}
             return super.onOptionsItemSelected(item);
         }
 
@@ -238,11 +246,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 
 
-            List<ExpandableListItem> mData = new ArrayList<ExpandableListItem>();
-
+             mData = new ArrayList<ExpandableListItem>();
 
             adapter = new CustomArrayAdapter(getActivity(), R.layout.item_post, mData);
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+             rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mListView = (ExpandingListView) rootView.findViewById(R.id.listview_forecast);
             mListView.setAdapter(adapter);
             mListView.setDivider(null);
@@ -255,7 +262,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 //        mForecastAdapter =
 //                new PostsAdapter(getActivity(),arrayOfPosts);
 
+            rootView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+            retryButton=(Button)rootView.findViewById(R.id.retry_button);
+            retryButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    populate();
+
+                }
+            });
             spinner = (ProgressBar)rootView.findViewById(R.id.progressBar);
             // Get a reference to the ListView, and attach this adapter to it.
 //        ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
@@ -266,9 +282,48 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         @Override
         public void onViewCreated(View view, Bundle savedInstanceState) {
-            FetchWeatherTask weatherTask = new FetchWeatherTask();
-            weatherTask.execute("");
+
+            populate();
             super.onViewCreated(view, savedInstanceState);
+        }
+public void show_dummy(){
+    rootView.findViewById(R.id.listview_forecast).setVisibility(View.VISIBLE);
+    rootView.findViewById(R.id.retry_button).setVisibility(View.GONE);
+    mData.clear();
+    mData.add(new ExpandableListItem(1, 1, "Dummy title 1", 200, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quibusdam culpa, aliquid, adipisci tenetur, atque natus distinctio praesentium amet quas autem possimus sit laudantium explicabo blanditiis, libero quaerat provident pariatur?"));
+    mData.add(new ExpandableListItem(2,2, "Dummy title 2",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum veniam voluptates illo expedita laudantium, magni dolorem voluptatibus! Culpa similique dolore architecto totam, ullam molestiae nobis cum consequatur, rerum. Similique, quidem!"));
+    mData.add(new ExpandableListItem(1,3, "Dummy title 3",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis sed velit possimus esse explicabo, quas corrupti et earum id porro cum, distinctio ipsa adipisci alias iste doloribus molestiae incidunt natus."));
+    mData.add(new ExpandableListItem(3,4, "Dummy title 4",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur reiciendis quos commodi laborum perferendis rem nam alias nulla nostrum adipisci neque beatae eaque vitae aut corrupti impedit ut, necessitatibus. Rem."));
+    mData.add(new ExpandableListItem(4,5, "Dummy title 5",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus hic facilis pariatur suscipit beatae at provident nisi dicta laudantium facere incidunt rerum dolorum odio aliquid vero repellat, officiis quia."));
+    mData.add(new ExpandableListItem(5,6, "Dummy title 6",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quibusdam culpa, aliquid, adipisci tenetur, atque natus distinctio praesentium amet quas autem possimus sit laudantium explicabo blanditiis, libero quaerat provident pariatur?"));
+    mData.add(new ExpandableListItem(2,7, "Dummy title 7",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum veniam voluptates illo expedita laudantium, magni dolorem voluptatibus! Culpa similique dolore architecto totam, ullam molestiae nobis cum consequatur, rerum. Similique, quidem!"));
+    mData.add(new ExpandableListItem(7,8, "Dummy title 8",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis sed velit possimus esse explicabo, quas corrupti et earum id porro cum, distinctio ipsa adipisci alias iste doloribus molestiae incidunt natus."));
+    mData.add(new ExpandableListItem(3,9, "Dummy title 9",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur reiciendis quos commodi laborum perferendis rem nam alias nulla nostrum adipisci neque beatae eaque vitae aut corrupti impedit ut, necessitatibus. Rem."));
+    mData.add(new ExpandableListItem(5,10, "Dummy title 10",200,"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus hic facilis pariatur suscipit beatae at provident nisi dicta laudantium facere incidunt rerum dolorum odio aliquid vero repellat, officiis quia."));
+adapter.addAll(mData);
+}
+public void populate(){
+    if(isOnline()){
+        mData.clear();
+        rootView.findViewById(R.id.listview_forecast).setVisibility(View.VISIBLE);
+        rootView.findViewById(R.id.retry_button).setVisibility(View.GONE);
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        weatherTask.execute("");
+
+    }
+    else{
+        rootView.findViewById(R.id.listview_forecast).setVisibility(View.GONE);
+        rootView.findViewById(R.id.retry_button).setVisibility(View.VISIBLE);
+    }
+
+}
+
+        public  boolean isOnline() {
+            ConnectivityManager cm =
+                    (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            return  ( activeNetwork != null &&
+                    activeNetwork.isConnectedOrConnecting());
         }
 
 

@@ -32,12 +32,12 @@
         "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
         "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_section_dummy.xml",
         "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\src\\main\\res\\layout\\fragment_section_dummy.xml"
+    },
+    {
+        "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
