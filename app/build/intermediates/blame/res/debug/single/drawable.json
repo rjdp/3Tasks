@@ -4,6 +4,10 @@
         "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\src\\main\\res\\drawable\\bms_logo_new.png"
     },
     {
+        "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bgdbg.png",
+        "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\src\\main\\res\\drawable\\bgdbg.png"
+    },
+    {
         "merged": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bms_logo.png",
         "source": "C:\\Users\\A.K ABHI\\EffectiveNavigation2\\app\\src\\main\\res\\drawable\\bms_logo.png"
     }

@@ -35,6 +35,7 @@ public class SplashScreenActivity extends Activity {
             public void run() {
 
                 finish();
+
             }
         }, 10000);
     }
@@ -45,6 +46,7 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_screen);
+
         ImageView imageView;
         ImageView imageView1;
         Animation pulse;
@@ -54,7 +56,7 @@ public class SplashScreenActivity extends Activity {
         pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         imageView.startAnimation(pulse);
 
-         alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+        alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         RelativeLayout relativeLayout=(RelativeLayout) findViewById(R.id.rel_lay);
         relativeLayout.clearAnimation();
         relativeLayout.startAnimation(alpha);
@@ -62,6 +64,10 @@ public class SplashScreenActivity extends Activity {
         translate = AnimationUtils.loadAnimation(this, R.anim.translate);
         imageView1 = (ImageView) findViewById(R.id.imageView2);
         imageView1.startAnimation(translate);
+
+
+
+
     }
 
     @Override
