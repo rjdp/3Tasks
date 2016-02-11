@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/item_linear_layout"
+
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:gravity="center_horizontal"
+          />
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:layout_weight="4"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="#ff0099cc"
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvBody"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="sans-serif-condensed"-->
+        <!--android:gravity="center_horizontal"-->
+
+        <!--android:textAppearance="?android:textAppearanceSmall"/>-->
+
+    <com.example.android.effectivenavigation.ExpandingLayout
+        android:id="@+id/expanding_layout"
+        android:layout_height="wrap_content"
+
+        android:layout_width="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
+
+            android:id="@+id/tvBody"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"/>
+
+    </com.example.android.effectivenavigation.ExpandingLayout>
+
+
+</LinearLayout>
